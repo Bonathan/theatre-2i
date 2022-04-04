@@ -1,4 +1,6 @@
-module.exports = {
+const withPWA = require("next-pwa");
+
+module.exports = withPWA({
   reactStrictMode: true,
   images: {
     domains: ['20.203.179.186', '20.203.179.186:1337', '20.203.221.90', '20.203.221.90:1337'],
@@ -9,15 +11,20 @@ module.exports = {
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
-        // don't resolve 'fs' module on the client to prevent this error on build --> Error: Can't resolve 'fs'
-        config.resolve.fallback = {
-            fs: false,
-            module: false,
-            // process: require.resolve("process/browser"),
-            "process": require.resolve("process/browser")
-        }
+      // don't resolve 'fs' module on the client to prevent this error on build --> Error: Can't resolve 'fs'
+      config.resolve.fallback = {
+        fs: false,
+        module: false,
+        // process: require.resolve("process/browser"),
+        "process": require.resolve("process/browser")
+      }
     }
-
+    
     return config;
-  }
-}
+  },
+  pwa: {
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+  },
+})

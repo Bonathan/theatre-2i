@@ -13,7 +13,7 @@
     "datejs": "^1.0.0-rc3",
     "framer-motion": "^6.2.4",
     "next": "12.0.10",
-    "next-pwa": "^5.4.4",
+    "next-pwa": "^5.4.6",
     "postcss": "^8.4.6",
     "process": "^0.11.10",
     "qs": "^6.10.3",
